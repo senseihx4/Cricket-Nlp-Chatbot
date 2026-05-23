@@ -9,6 +9,7 @@ A Streamlit-based Q&A search app for IPL 2026 cricket questions. It uses TF-IDF 
 3. RapidFuzz partial ratio scores exact/fuzzy keyword matches
 4. Both scores are combined (40% fuzzy + 60% TF-IDF) to pick the best answer
 5. If no confident match is found, it replies: *"Sorry, I don't know about that!"*
+<img width="817" height="778" alt="image" src="https://github.com/user-attachments/assets/025b37ce-1e9e-4a8a-b03d-a8123fedf273" />
 
 ## Setup
 
