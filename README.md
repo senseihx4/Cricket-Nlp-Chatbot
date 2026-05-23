@@ -8,7 +8,8 @@ A smart cricket Q&A chatbot built with NLP techniques — no NLTK, no spaCy. Use
  
 ## 🚀 What It Does
  
-- Understands cricket questions even with **spelling mistakes**
+- Answers cricket questions from a pre-built IPL 2025 dataset
+- Understands questions even with **spelling mistakes**
 - Uses **Fuzzy Matching** to handle typos
 - Uses **TF-IDF + Cosine Similarity** to understand meaning
 - Combines both scores for the **best possible answer**
@@ -39,12 +40,10 @@ Best Answer or "Sorry, I don't know"
 cricket-nlp-chatbot/
 │
 ├── data/
-│   └── qa_data.csv          # Cricket Q&A dataset
+│   └── qa_data.csv          # IPL 2025 Q&A dataset
 │
 ├── nlpproject.py            # Main Streamlit app
 ├── requirements.txt         # All dependencies
-├── .env                     # API keys (not committed)
-├── .gitignore
 └── README.md
 ```
  
@@ -83,16 +82,6 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
  
-### 4. Set up your `.env` file
- 
-Create a `.env` file in the root folder:
- 
-```
-cricbuzz=your_rapidapi_key_here
-```
- 
-> Get your free API key from [RapidAPI](https://rapidapi.com)
- 
 ---
  
 ## ▶️ Run the App
@@ -105,7 +94,7 @@ Then open your browser at `http://localhost:8501`
  
 ---
  
-## 📦 Requirements
+## 📦 requirements.txt
  
 ```
 streamlit
@@ -113,13 +102,6 @@ pandas
 scikit-learn
 rapidfuzz
 python-dotenv
-requests
-```
- 
-Install all at once:
- 
-```bash
-pip install -r requirements.txt
 ```
  
 ---
@@ -144,8 +126,6 @@ pip install -r requirements.txt
 | `rapidfuzz` | Fuzzy string matching for typos |
 | `scikit-learn` | TF-IDF vectorizer + cosine similarity |
 | `streamlit` | Web UI |
-| `python-dotenv` | Load API keys from `.env` |
-| `requests` | API calls |
  
 ---
  
