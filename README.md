@@ -1,137 +1,42 @@
-# 🏏 Cricket NLP Chatbot
- 
-A smart cricket Q&A chatbot built with NLP techniques — no NLTK, no spaCy. Uses fuzzy matching and TF-IDF cosine similarity to understand user questions even with typos and mistakes.
- 
-![Python](https://img.shields.io/badge/Python-3.8+-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-UI-red) ![NLP](https://img.shields.io/badge/NLP-TF--IDF-green)
- 
----
- 
-## 🚀 What It Does
- 
-- Answers cricket questions from a pre-built IPL 2025 dataset
-- Understands questions even with **spelling mistakes**
-- Uses **Fuzzy Matching** to handle typos
-- Uses **TF-IDF + Cosine Similarity** to understand meaning
-- Combines both scores for the **best possible answer**
-- Says *"Sorry, I don't know"* when the question is off-topic
-- Clean **Streamlit web UI**
----
- 
-## 🧠 How It Works
- 
-```
-User Question
-      ↓
-Preprocess (lowercase, remove stop words)
-      ↓
-Layer 1 — Fuzzy Matching (handles typos)
-Layer 2 — TF-IDF + Cosine Similarity (handles meaning)
-      ↓
-Combined Score
-      ↓
-Best Answer or "Sorry, I don't know"
-```
- 
----
- 
-## 📁 Project Structure
- 
-```
-cricket-nlp-chatbot/
-│
-├── data/
-│   └── qa_data.csv          # IPL 2025 Q&A dataset
-│
-├── nlpproject.py            # Main Streamlit app
-├── requirements.txt         # All dependencies
-└── README.md
-```
- 
----
- 
-## ⚙️ Installation
- 
-### 1. Clone the repository
- 
+# Cricket NLP Chatbot
+
+A Streamlit-based Q&A search app for IPL 2026 cricket questions. It uses TF-IDF vectorization combined with fuzzy matching to find the best answer from a dataset of cricket Q&A pairs.
+
+## How It Works
+
+1. Your question is preprocessed (lowercased, stopwords removed)
+2. TF-IDF cosine similarity finds semantically close questions in the dataset
+3. RapidFuzz partial ratio scores exact/fuzzy keyword matches
+4. Both scores are combined (40% fuzzy + 60% TF-IDF) to pick the best answer
+5. If no confident match is found, it replies: *"Sorry, I don't know about that!"*
+
+## Setup
+
 ```bash
-git clone https://github.com/yourusername/cricket-nlp-chatbot.git
-cd cricket-nlp-chatbot
-```
- 
-### 2. Create a virtual environment
- 
-```bash
-python -m venv venv
-```
- 
-Activate it:
- 
-- **Mac/Linux:**
-```bash
+# Create and activate a virtual environment
+python3 -m venv venv
 source venv/bin/activate
-```
- 
-- **Windows:**
-```bash
-venv\Scripts\activate
-```
- 
-### 3. Install requirements
- 
-```bash
+
+# Install dependencies
 pip install -r requirements.txt
-```
- 
----
- 
-## ▶️ Run the App
- 
-```bash
+
+# Run the app
 streamlit run nlpproject.py
 ```
- 
-Then open your browser at `http://localhost:8501`
- 
----
- 
-## 📦 requirements.txt
- 
+
+## Project Structure
+
 ```
-streamlit
-pandas
-scikit-learn
-rapidfuzz
-python-dotenv
+NLP-project/
+├── nlpproject.py        # Main Streamlit app
+├── requirements.txt     # Python dependencies
+└── data/
+    └── ipl2026data.csv  # Cricket Q&A dataset
 ```
- 
----
- 
-## 💬 Example Questions You Can Ask
- 
-| Question | Answer |
-|---|---|
-| Who won IPL 2025? | RCB won IPL 2025 |
-| Best bowler in IPL? | Josh Hazlewood - Purple Cap |
-| Who has orange cap? | B Sai Sudharsan - 679 runs |
-| Did Kohli win IPL? | Yes, first title in 2025 |
-| Woh won ipl 2025? | RCB (handles typos!) |
- 
----
- 
-## 🔧 Tech Stack
- 
-| Tool | Purpose |
-|---|---|
-| `pandas` | Load and manage Q&A data |
-| `rapidfuzz` | Fuzzy string matching for typos |
-| `scikit-learn` | TF-IDF vectorizer + cosine similarity |
-| `streamlit` | Web UI |
- 
----
- 
-## 🚫 Constraints
- 
-This project was built **without**:
-- ❌ NLTK
-- ❌ spaCy
-All text processing is done manually using pure Python and allowed libraries only.
+
+## Dependencies
+
+- `streamlit` — web UI
+- `pandas` — data loading
+- `scikit-learn` — TF-IDF vectorization & cosine similarity
+- `rapidfuzz` — fuzzy string matching
